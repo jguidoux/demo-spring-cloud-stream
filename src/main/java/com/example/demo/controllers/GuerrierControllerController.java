@@ -12,12 +12,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("v1")
-public class MyController {
+public class GuerrierControllerController {
 
 
     private final GuerrierService service;
 
-    public MyController(GuerrierService service) {
+    public GuerrierControllerController(GuerrierService service) {
         this.service = service;
     }
 
