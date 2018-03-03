@@ -1,5 +1,6 @@
-package com.example.demo;
+package com.example.demo.repositories;
 
+import com.example.demo.model.Guerrier;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;

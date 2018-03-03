@@ -1,7 +1,7 @@
-package com.example.demo;
+package com.example.demo.controllers;
 
-import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.cloud.stream.messaging.Processor;
+import com.example.demo.model.Guerrier;
+import com.example.demo.services.GuerrierService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

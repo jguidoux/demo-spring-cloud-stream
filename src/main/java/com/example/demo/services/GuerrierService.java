@@ -1,10 +1,11 @@
-package com.example.demo;
+package com.example.demo.services;
 
+import com.example.demo.model.Guerrier;
+import com.example.demo.repositories.GuerrierRepository;
+import com.example.demo.stream.publishers.GuerrierPublisher;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Processor;
 import org.springframework.cloud.stream.messaging.Source;
-import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,20 +16,18 @@ public class GuerrierService {
 
     private final GuerrierRepository repo;
 
-    private  final Source mysource;
-    public GuerrierService(GuerrierRepository repo, Source mysource) {
+    private  final GuerrierPublisher publisher;
+    public GuerrierService(GuerrierRepository repo, GuerrierPublisher publisher) {
         this.repo = repo;
-        this.mysource = mysource;
+        this.publisher = publisher;
     }
 
     public List<Guerrier> findAll() {
         return repo.findAll();
     }
 
-    //@SendTo(Processor.OUTPUT)
-    public Guerrier save(Guerrier g) {
+    public void save(Guerrier g) {
         repo.save(g);
-        mysource.output().send(MessageBuilder.withPayload(g).build());
-        return g;
+        publisher.publish(g);
     }
 }

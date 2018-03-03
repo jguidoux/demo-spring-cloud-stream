@@ -1,5 +1,6 @@
-package com.example.demo;
+package com.example.demo.stream.subsrcibers;
 
+import com.example.demo.model.Guerrier;
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Processor;
