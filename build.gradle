@@ -12,6 +12,7 @@ buildscript {
 
 plugins {
     id 'net.ltgt.apt' version '0.10'
+    id 'com.avast.gradle.docker-compose' version "0.7.1"
 }
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
@@ -56,4 +57,13 @@ dependencies {
     compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.1")
 
 
+}
+
+
+dockerCompose {
+    // settings as usual
+    myNested {
+        useComposeFiles = ['docker/docker-compose.yaml']
+        isRequiredBy(project.tasks.bootRun)
+    }
 }
