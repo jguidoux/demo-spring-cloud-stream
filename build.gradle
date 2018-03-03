@@ -62,7 +62,7 @@ dependencies {
 
 dockerCompose {
     // settings as usual
-    myNested {
+    rabbit {
         useComposeFiles = ['docker/docker-compose.yaml']
         isRequiredBy(project.tasks.bootRun)
     }
