@@ -11,3 +11,8 @@ go to http://localhost:15672 to see the web ui.
 
 To stop rabbitmq.
 ``` gradle rabbitComposeDown```
+
+
+doc :
+https://github.com/avast/gradle-docker-compose-plugin
+https://docs.spring.io/spring-cloud-stream/docs/Brooklyn.M1/reference/htmlsingle/
