@@ -1,27 +1,26 @@
 package com.example.demo;
 
+import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.cloud.stream.messaging.Processor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @RestController
 public class MyController {
 
 
-    private final GuerrierRepository repo;
+    private final GuerrierService service;
 
-    public MyController(GuerrierRepository repo) {
-        this.repo = repo;
+    public MyController(GuerrierService service) {
+        this.service = service;
     }
 
     @GetMapping("/name")
     public List<Guerrier> name(@RequestParam String value) {
 
-        return repo.findAll();
+        return service.findAll();
     }
 }

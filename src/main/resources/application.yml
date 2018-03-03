@@ -1,0 +1,28 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: guerriers
+         # binder: local_rabbit
+        output:
+          destination: guerriers
+      default.contentType: application/json
+          #binder: local_rabbit
+#      binders:
+#        local_rabbit:
+#          type: rabbit
+#          environment:
+#            spring:
+#              rabbitmq:
+#                host: 0.0.0.0
+#                port: 32771
+#                username: guest
+#                password: guest
+#                virtual-host: /
+
+  rabbitmq:
+    host: 0.0.0.0
+    port: 32771
+    username: guest
+    password: guest
