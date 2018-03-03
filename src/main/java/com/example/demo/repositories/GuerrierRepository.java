@@ -15,4 +15,7 @@ public interface GuerrierRepository  {
 
     @Select("select * from Guerrier")
     List<Guerrier> findAll();
+
+    @Select("select * from Guerrier where id=#{id}")
+    Guerrier findById(String id);
 }
