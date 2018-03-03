@@ -1,16 +1,18 @@
 package com.example.demo;
 
+import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Processor;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 
 @Service
 public class Subscirber {
 
 
-    @StreamListener(Processor.INPUT)
-    public void  printMessage(Guerrier guerrier) {
+    @StreamListener
+    public void printMessage(@Input(Processor.INPUT) Flux<Guerrier> guerriers) {
         System.out.println();
-        System.out.println(guerrier);
+        guerriers.subscribe(System.out::println);
     }
 }

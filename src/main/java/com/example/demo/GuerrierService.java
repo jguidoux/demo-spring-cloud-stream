@@ -25,6 +25,7 @@ public class GuerrierService {
         return repo.findAll();
     }
 
+    //@SendTo(Processor.OUTPUT)
     public Guerrier save(Guerrier g) {
         repo.save(g);
         mysource.output().send(MessageBuilder.withPayload(g).build());
