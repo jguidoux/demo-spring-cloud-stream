@@ -2,6 +2,12 @@
 <configuration debug="true">
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
 
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger{36}.%M - %msg%n</pattern>
+        </encoder>
+    </appender>
+
     <appender name="amqp"
               class="org.springframework.amqp.rabbit.logback.AmqpAppender">
         <host>localhost</host>
@@ -33,8 +39,9 @@
         </layout>
     </appender>
 
-    <logger name="com.example" level="DEBUG">
+    <root level="info">
+        <appender-ref ref="STDOUT" />
         <appender-ref ref="amqp"/>
-    </logger>
+    </root>
 
 </configuration>
