@@ -10,12 +10,15 @@ buildscript {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
         classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+
     }
 }
 
 plugins {
     id 'net.ltgt.apt' version '0.10'
     id 'com.avast.gradle.docker-compose' version "0.7.1"
+    id "com.palantir.docker" version "0.19.2"
+
 }
 
 apply plugin: 'java'
@@ -92,10 +95,22 @@ compileTestKotlin {
 }
 
 
+docker {
+    name "${project.group}/${jar.baseName}"
+    files jar.archivePath
+    buildArgs(['JAR_FILE': "${jar.archiveName}"])
+}
+
 dockerCompose {
     // settings as usual
-    rabbit {
-        useComposeFiles = ['docker/docker-compose.yaml']
+    dep {
+        useComposeFiles = ['docker/docker-compose-dependencies.yaml']
         isRequiredBy(project.tasks.bootRun)
     }
+
+    myapp {
+        useComposeFiles = ['docker/docker-compose-dependencies.yaml', 'docker/docker-compose-myApp.yaml']
+    }
 }
+
+

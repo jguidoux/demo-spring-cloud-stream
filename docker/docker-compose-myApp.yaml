@@ -1,0 +1,10 @@
+version: "3"
+services:
+
+  myapp:
+    depends_on:
+      - rabbitmq
+      - elk
+    image: "com.example/demo:latest"
+    ports:
+      - 8080:8080
