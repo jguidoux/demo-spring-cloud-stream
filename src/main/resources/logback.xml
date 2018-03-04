@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <appender name="amqp"
+              class="org.springframework.amqp.rabbit.logback.AmqpAppender">
+        <host>localhost</host>
+        <port>5672</port>
+        <!--<virtualHost>/</virtualHost>-->
+        <username>guest</username>
+        <password>guest</password>
+        <exchangeType>topic</exchangeType>
+        <!--<exchangeName>demo.log</exchangeName>-->
+        <applicationId>demo</applicationId>
+        <routingKeyPattern>demo</routingKeyPattern>
+        <declareExchange>true</declareExchange>
+        <exchangeName>demo-logging</exchangeName>
+
+        <generateId>true</generateId>
+        <charset>UTF-8</charset>
+        <durable>true</durable>
+        <deliveryMode>PERSISTENT</deliveryMode>
+        <layout>
+            <pattern>
+                {
+                "time": "%date{ISO8601}",
+                "thread": "%thread",
+                "level": "%level",
+                "class": "%logger{36}",
+                "message": "%message"
+                }
+            </pattern>
+        </layout>
+    </appender>
+
+    <logger name="com.example" level="DEBUG">
+        <appender-ref ref="amqp"/>
+    </logger>
+
+</configuration>
