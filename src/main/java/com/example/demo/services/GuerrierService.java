@@ -33,7 +33,7 @@ public class GuerrierService {
     }
 
     public void save(Guerrier g) {
-        LOGGER.info("adding new guerrire '{}' into database", g.getName());
+        LOGGER.info("adding new guerrier '{}' into database", g.getName());
         repo.save(g);
         publisher.publish(g);
     }

@@ -9,17 +9,19 @@ import org.springframework.context.annotation.Bean
 import reactor.core.publisher.Flux
 import java.time.Duration
 
+
 @SpringBootApplication
 class DemoApplication {
 
 
     @Bean
     fun runner(service: GuerrierService) = ApplicationRunner {
-         Flux.just("jeremie", " raph", "laurent", "pierre", "jc", "ronan")
-            .delayElements(Duration.ofSeconds(2))
-            .map { name -> Guerrier(name, 2) }
-            .subscribe({ service.save(it) })
+        Flux.just("jeremie", " raph", "laurent", "pierre", "jc", "ronan")
+                .delayElements(Duration.ofSeconds(2))
+                .map { name -> Guerrier(name, 2) }
+                .subscribe({ service.save(it) })
     }
+
 
 
 }
