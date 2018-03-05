@@ -4,11 +4,12 @@
  * and open the template in the editor.
  */
 package com.example.demo.controllers;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -17,13 +18,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class mavuController {
 
-   @RequestMapping("/")
+   @RequestMapping("/index.html")
    public String index() {
-      return "index";
+      System.out.println("tentative d'afficher index.html");
+     return "index";
    }
 
-   @PostMapping("/hey")
-   public String sayHello(@RequestParam("name") String name, Model model) {
+   @GetMapping("/hey/{name}")
+   public String sayHello(@PathVariable("name") String name, Model model) {
       model.addAttribute("name", name);
       return "hey";
    }

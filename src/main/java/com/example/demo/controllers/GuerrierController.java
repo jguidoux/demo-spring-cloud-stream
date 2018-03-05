@@ -11,12 +11,12 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("v1")
-public class GuerrierControllerController {
+public class GuerrierController {
 
 
     private final GuerrierService service;
 
-    public GuerrierControllerController(GuerrierService service) {
+    public GuerrierController(GuerrierService service) {
         this.service = service;
     }
 

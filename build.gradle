@@ -48,16 +48,19 @@ dependencyManagement {
 }
 
 dependencies {
+
     implementation('org.springframework.boot:spring-boot-starter-web')
-    implementation('org.springframework.boot:spring-boot-starter-webflux')
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+    implementation 'org.springframework.boot:spring-boot-starter-tomcat'
+    implementation 'javax.servlet:jstl'
+
+   implementation('org.springframework.boot:spring-boot-starter-webflux')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation('io.projectreactor:reactor-test')
 
     compileOnly 'org.projectlombok:lombok:1.16.20'
     apt "org.projectlombok:lombok:1.16.20"
-//  <groupId>javax.servlet.jsp.jstl</groupId>
-//      <artifactId>javax.servlet.jsp.jstl-api</artifactId>
-//      <version>1.2.1</version>
+
     implementation('javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.1')
     implementation('org.springframework.cloud:spring-cloud-starter-stream-rabbit')
     implementation('org.springframework.cloud:spring-cloud-stream-reactive')
@@ -104,7 +107,7 @@ docker {
 }
 
 dockerCompose {
-    // settings as usual
+
     dep {
         useComposeFiles = ['docker/docker-compose-dependencies.yaml']
         isRequiredBy(project.tasks.bootRun)

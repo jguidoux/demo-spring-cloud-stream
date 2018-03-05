@@ -1,37 +1,25 @@
-
 spring:
-  cloud:
-    stream:
-      bindings:
-        input:
-          destination: guerriers
-          binder: local_rabbit
-        output:
-          destination: guerriers
-          binder: local_rabbit
-      default.contentType: application/json
-      binders:
-        local_rabbit:
-          type: rabbit
-          environment:
-            spring:
-              rabbitmq:
-                host: localhost
-                port: 5672
-                username: guest
-                password: guest
-
-
-
-
-spring:
-  profiles: local
-
-spring.cloud.stream.binders:local_rabbit.environment.spring.rabbitmq.host: localhost
-
-
-
-spring:
-  profiles: deploy
-
-spring.cloud.stream.binders:local_rabbit.environment.spring.rabbitmq.host: myrabbit
+    mvc:
+        view:
+            prefix: /WEB-INF/views/
+            suffix: .jsp
+    cloud:
+        stream:
+            bindings:
+                input:
+                    destination: guerriers
+                    binder: local_rabbit
+                output:
+                    destination: guerriers
+                    binder: local_rabbit
+            default.contentType: application/json
+            binders:
+                local_rabbit:
+                    type: rabbit
+                    environment:
+                        spring:
+                            rabbitmq:
+                                host: localhost
+                                port: 5672
+                                username: guest
+                                password: guest
