@@ -71,6 +71,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
 
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+  //  implementation("org.springframework.boot:spring-boot-starter-security")
+
 
     // logging
     implementation('ch.qos.logback:logback-classic')
@@ -108,7 +110,7 @@ dockerCompose {
 
     dep {
         useComposeFiles = ['docker/docker-compose-dependencies.yaml']
-        isRequiredBy(project.tasks.bootRun)
+        //isRequiredBy(project.tasks.bootRun)
     }
 
     myapp {
