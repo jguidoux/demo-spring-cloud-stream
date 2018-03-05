@@ -51,7 +51,6 @@ dependencies {
 
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
-    implementation 'org.springframework.boot:spring-boot-starter-tomcat'
     implementation 'javax.servlet:jstl'
 
    implementation('org.springframework.boot:spring-boot-starter-webflux')
