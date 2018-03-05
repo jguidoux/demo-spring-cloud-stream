@@ -60,7 +60,6 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.16.20'
     apt "org.projectlombok:lombok:1.16.20"
 
-    implementation('javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.1')
     implementation('org.springframework.cloud:spring-cloud-starter-stream-rabbit')
     implementation('org.springframework.cloud:spring-cloud-stream-reactive')
     testImplementation('org.springframework.cloud:spring-cloud-stream-test-support')
