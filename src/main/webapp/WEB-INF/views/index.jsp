@@ -15,7 +15,7 @@
   <hr>
 
   <div class="form">
-    <form action="hello" method="post" onsubmit="return validate()">
+    <form action="hello" method="post" onsubmit="validate()">
       <table>
         <tr>
           <td>Enter Your name</td>
